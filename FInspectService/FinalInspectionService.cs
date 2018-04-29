@@ -28,6 +28,7 @@ namespace FInspectServices
                 }
                 
                 AttemptSave();
+
             }
             else
             {
@@ -37,7 +38,7 @@ namespace FInspectServices
 
         public IEnumerable<FinalInspection> GetAll()
         {
-            var history = _db.FinalInspections.Include(x => x.Inspector).Include(x => x.InspectionFiles);
+            var history = _db.FinalInspections.Include(x => x.Inspector).Include(x=> x.FinalInspectionUploads);
 
             return history;
         }
@@ -55,6 +56,7 @@ namespace FInspectServices
                 record.MfgLocation = inspection.MfgLocation;
                 record.InspectionLocation = inspection.InspectionLocation;
                 record.Inspector = inspection.Inspector;
+                record.FinalInspectionUploads = inspection.FinalInspectionUploads;
                 _db.Entry(record.Inspector).State = EntityState.Unchanged;
                 _db.Entry(record).State = EntityState.Modified;          
             }
@@ -72,10 +74,11 @@ namespace FInspectServices
 
         public void Delete(int id)
         {
-            var inspection = _db.FinalInspections.SingleOrDefault(x => x.Id == id);
+            var inspection = _db.FinalInspections.Include(x => x.FinalInspectionUploads).FirstOrDefault(x => x.Id == id);
             if (inspection != null)
             {
                 _db.FinalInspections.Remove(inspection);
+                
                 AttemptSave();
             }
             else

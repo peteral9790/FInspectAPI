@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="AssemblyDetailsService.cs" />
     <Compile Include="FinalInspectionService.cs" />
-    <Compile Include="FinalInspectionUploadService.cs" />
     <Compile Include="InspectorService.cs" />
     <Compile Include="MiStatusService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -18,7 +18,7 @@ C:\Users\finspect-dev\Desktop\Development Projects\FInspectApp\FInspectAPI\finsp
 C:\Users\finspect-dev\Desktop\Development Projects\FInspectApp\FInspectAPI\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.csprojResolveAssemblyReference.cache
 C:\Users\finspect-dev\Desktop\Development Projects\FInspectApp\FInspectAPI\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.dll
 C:\Users\finspect-dev\Desktop\Development Projects\FInspectApp\FInspectAPI\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.pdb
-C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.Migrations.locations.resources
+C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.Migrations.initial.resources
 C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.csproj.GenerateResource.Cache
+C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.Migrations.modelbuilder.resources
 C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.csprojResolveAssemblyReference.cache
-C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.Migrations.UpdateFileUploads.resources

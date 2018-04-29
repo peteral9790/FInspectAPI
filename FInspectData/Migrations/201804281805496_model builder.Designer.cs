@@ -7,13 +7,13 @@ namespace FInspectData.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UpdateFileUploads : IMigrationMetadata
+    public sealed partial class modelbuilder : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateFileUploads));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(modelbuilder));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804221630073_Update FileUploads"; }
+            get { return "201804281805496_model builder"; }
         }
         
         string IMigrationMetadata.Source

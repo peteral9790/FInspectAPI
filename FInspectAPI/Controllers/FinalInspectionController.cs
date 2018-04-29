@@ -13,7 +13,6 @@ namespace FInspectAPI.Controllers
     {
         private readonly FinalInspectionService _InspectionService = new FinalInspectionService();
         private readonly InspectorService _InspectorService = new InspectorService();
-        private readonly FinalInspectionUploadService _FileUploadService = new FinalInspectionUploadService();
 
         [HttpGet()]
         [ActionName("GetInspections")]
@@ -35,10 +34,11 @@ namespace FInspectAPI.Controllers
                     InspectionLocation = result.InspectionLocation,
                     InspectorName = result.Inspector.FirstName + " " + result.Inspector.LastName,
                     EmployeeId = result.Inspector.EmployeeId,
-                    InspectionFiles = result.InspectionFiles
+                    FinalInspectionUploads = result.GetUploadList(result.FinalInspectionUploads)
                 });
                 if (InspectionHistory != null)
                 {
+
                     return Ok(InspectionHistory);
                 }
                 else
@@ -59,8 +59,9 @@ namespace FInspectAPI.Controllers
         {
             if(ModelState.IsValid)
             {
-                var inspector = new FInspectData.Models.Inspector();
-                inspector = _InspectorService.GetByEmployeeId(newInspection.EmployeeId);
+                //var upload = new FInspectData.Models.FinalInspectionUpload();
+                //var inspector = new FInspectData.Models.Inspector();
+                //inspector = _InspectorService.GetByEmployeeId(newInspection.EmployeeId);
                 var Record = new FInspectData.Models.FinalInspection()
                 {
                     TMSPartNumber = newInspection.TMSPartNumber,
@@ -71,11 +72,22 @@ namespace FInspectAPI.Controllers
                     MfgLocation = newInspection.MfgLocation,
                     InspectionLocation = newInspection.InspectionLocation,
                     InspectionType = newInspection.InspectionType,
-                    Inspector = inspector,
-                    InspectionFiles = newInspection.InspectionFiles
+                    Inspector = _InspectorService.GetByEmployeeId(newInspection.EmployeeId),
+                    FinalInspectionUploads = new List<FInspectData.Models.FinalInspectionUpload>()
                 };
+                if (newInspection.FinalInspectionUploads != null)
+                {
+                    foreach (var item in newInspection.FinalInspectionUploads)
+                    {
+                        var upload = new FInspectData.Models.FinalInspectionUpload
+                        {
+                            Attachment = item.ToString()
+                        };
+                        Record.FinalInspectionUploads.Add(upload);
+                    }
+                }
                 _InspectionService.Add(Record);
-                return Ok(Record);
+                return Ok(newInspection);
             }
             else
             {
@@ -121,8 +133,19 @@ namespace FInspectAPI.Controllers
                     InspectionLocation = inspection.InspectionLocation,
                     InspectionType = inspection.InspectionType,
                     Inspector = _InspectorService.GetByEmployeeId(inspection.EmployeeId),
-                    InspectionFiles = inspection.InspectionFiles
+                    FinalInspectionUploads = new List<FInspectData.Models.FinalInspectionUpload>()
                 };
+                if (inspection.FinalInspectionUploads != null)
+                {
+                    foreach (var item in inspection.FinalInspectionUploads)
+                    {
+                        var upload = new FInspectData.Models.FinalInspectionUpload
+                        {
+                            Attachment = item.ToString()
+                        };
+                        newDetails.FinalInspectionUploads.Add(upload);
+                    }
+                }
                 _InspectionService.Update(newDetails);
                 return Ok(System.Net.HttpStatusCode.NoContent);
             }

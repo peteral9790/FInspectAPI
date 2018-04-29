@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FInspectAPI.Models
 {
@@ -15,6 +16,6 @@ namespace FInspectAPI.Models
         public string InspectionType { get; set; }
         public string InspectorName { get; set; }
         public int EmployeeId { get; set; }
-        public FInspectData.Models.FinalInspectionUpload InspectionFiles { get; set; }
+        public List<string> FinalInspectionUploads { get; set; }
     }
 }

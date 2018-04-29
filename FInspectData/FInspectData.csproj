@@ -51,17 +51,16 @@
   <ItemGroup>
     <Compile Include="FinalInspectionContext.cs" />
     <Compile Include="Interfaces\IAssemblyDetails.cs" />
-    <Compile Include="Interfaces\IFinalInspectionUploads.cs" />
     <Compile Include="Interfaces\IInspection.cs" />
     <Compile Include="Interfaces\IInspector.cs" />
     <Compile Include="Interfaces\IMiStatusTransaction.cs" />
-    <Compile Include="Migrations\201803241426462_locations.cs" />
-    <Compile Include="Migrations\201803241426462_locations.Designer.cs">
-      <DependentUpon>201803241426462_locations.cs</DependentUpon>
+    <Compile Include="Migrations\201804272333083_initial.cs" />
+    <Compile Include="Migrations\201804272333083_initial.Designer.cs">
+      <DependentUpon>201804272333083_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804221630073_Update FileUploads.cs" />
-    <Compile Include="Migrations\201804221630073_Update FileUploads.Designer.cs">
-      <DependentUpon>201804221630073_Update FileUploads.cs</DependentUpon>
+    <Compile Include="Migrations\201804281805496_model builder.cs" />
+    <Compile Include="Migrations\201804281805496_model builder.Designer.cs">
+      <DependentUpon>201804281805496_model builder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Assembly.cs" />
@@ -77,11 +76,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803241426462_locations.resx">
-      <DependentUpon>201803241426462_locations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804272333083_initial.resx">
+      <DependentUpon>201804272333083_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804221630073_Update FileUploads.resx">
-      <DependentUpon>201804221630073_Update FileUploads.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804281805496_model builder.resx">
+      <DependentUpon>201804281805496_model builder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
