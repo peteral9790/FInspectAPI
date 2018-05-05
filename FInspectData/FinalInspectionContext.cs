@@ -15,7 +15,7 @@ namespace FInspectData
         {
             // Configure Code First to ignore PluralizingTableName convention 
             // If you keep this convention then the generated tables will have pluralized names. 
-            modelBuilder.Entity<FinalInspection>().HasMany(x => x.FinalInspectionUploads).WithOptional().WillCascadeOnDelete();
+            modelBuilder.Entity<FinalInspection>().HasMany(x => x.FinalInspectionUploads).WithRequired(x => x.FinalInspection).WillCascadeOnDelete();
         }
         public virtual DbSet<FinalInspection> FinalInspections { get; set; }
         public virtual DbSet<Inspector> Inspectors { get; set; }

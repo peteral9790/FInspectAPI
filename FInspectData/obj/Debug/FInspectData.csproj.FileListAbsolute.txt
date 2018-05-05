@@ -22,3 +22,4 @@ C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAP
 C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.csproj.GenerateResource.Cache
 C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.Migrations.modelbuilder.resources
 C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.csprojResolveAssemblyReference.cache
+C:\Users\peter\Desktop\Website Development Files\FInspect\finspectapi\FInspectAPI\FInspectData\obj\Debug\FInspectData.Migrations.modelbuilderuploads.resources

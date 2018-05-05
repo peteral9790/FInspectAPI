@@ -135,17 +135,8 @@ namespace FInspectAPI.Controllers
                     Inspector = _InspectorService.GetByEmployeeId(inspection.EmployeeId),
                     FinalInspectionUploads = new List<FInspectData.Models.FinalInspectionUpload>()
                 };
-                if (inspection.FinalInspectionUploads != null)
-                {
-                    foreach (var item in inspection.FinalInspectionUploads)
-                    {
-                        var upload = new FInspectData.Models.FinalInspectionUpload
-                        {
-                            Attachment = item.ToString()
-                        };
-                        newDetails.FinalInspectionUploads.Add(upload);
-                    }
-                }
+                // Call get upload method on FinalInspection Object, creates list of objects from list of strings
+                newDetails.FinalInspectionUploads = newDetails.GetUploadObjects(inspection.FinalInspectionUploads);
                 _InspectionService.Update(newDetails);
                 return Ok(System.Net.HttpStatusCode.NoContent);
             }

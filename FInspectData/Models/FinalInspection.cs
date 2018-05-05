@@ -19,6 +19,10 @@ namespace FInspectData.Models
         public virtual Inspector Inspector { get; set; }
         public virtual ICollection<FinalInspectionUpload> FinalInspectionUploads { get; set; }
 
+
+
+
+        //Methods for transforming list of strings to a  list of upload objects
         public List<string> GetUploadList(ICollection<FinalInspectionUpload> uploads)
         {
             List<string> uploadList = new List<string>();
@@ -30,6 +34,20 @@ namespace FInspectData.Models
                 }
             }
             return uploadList;
+        }
+        public ICollection<FinalInspectionUpload> GetUploadObjects(List<string> uploadList)
+        {
+            List<FinalInspectionUpload> uploads = new List<FinalInspectionUpload>();
+
+            foreach (var upload in uploadList)
+            {
+                var newUpload = new FinalInspectionUpload();
+                newUpload.Attachment = upload.ToString();
+                uploads.Add(newUpload);
+            }
+
+            return uploads;
+
         }
     }
 

@@ -55,10 +55,21 @@ namespace FInspectServices
                 record.InspectionType = inspection.InspectionType;
                 record.MfgLocation = inspection.MfgLocation;
                 record.InspectionLocation = inspection.InspectionLocation;
-                record.Inspector = inspection.Inspector;
-                record.FinalInspectionUploads = inspection.FinalInspectionUploads;
+                record.Inspector = inspection.Inspector;                
                 _db.Entry(record.Inspector).State = EntityState.Unchanged;
-                _db.Entry(record).State = EntityState.Modified;          
+                _db.Entry(record).State = EntityState.Modified;
+
+                record.FinalInspectionUploads = new List<FinalInspectionUpload>();
+                var finalInspectionUploads = _db.FinalInspectionUploads.Where(x => x.FinalInspection_Id == record.Id).ToList();
+                foreach (var upload in finalInspectionUploads)
+                {
+                    _db.Entry(upload).State = EntityState.Deleted;
+                }                
+                foreach (var upload in inspection.FinalInspectionUploads)
+                {
+                    record.FinalInspectionUploads.Add(upload);
+                    _db.Entry(upload).State = EntityState.Added;
+                }
             }
             else
             {
