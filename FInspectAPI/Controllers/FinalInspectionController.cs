@@ -2,6 +2,7 @@
 using FInspectServices;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -13,6 +14,7 @@ namespace FInspectAPI.Controllers
     {
         private readonly FinalInspectionService _InspectionService = new FinalInspectionService();
         private readonly InspectorService _InspectorService = new InspectorService();
+        private readonly FinalInspectionuploadService _FileService = new FinalInspectionuploadService();
 
         [HttpGet()]
         [ActionName("GetInspections")]
@@ -34,11 +36,10 @@ namespace FInspectAPI.Controllers
                     InspectionLocation = result.InspectionLocation,
                     InspectorName = result.Inspector.FirstName + " " + result.Inspector.LastName,
                     EmployeeId = result.Inspector.EmployeeId,
-                    FinalInspectionUploads = result.GetUploadList(result.FinalInspectionUploads)
+                    FinalInspectionUploads = ConvertAPIUploads(result.FinalInspectionUploads)
                 });
                 if (InspectionHistory != null)
                 {
-
                     return Ok(InspectionHistory);
                 }
                 else
@@ -73,19 +74,19 @@ namespace FInspectAPI.Controllers
                     InspectionLocation = newInspection.InspectionLocation,
                     InspectionType = newInspection.InspectionType,
                     Inspector = _InspectorService.GetByEmployeeId(newInspection.EmployeeId),
-                    FinalInspectionUploads = new List<FInspectData.Models.FinalInspectionUpload>()
+                    FinalInspectionUploads = ConvertDATAUploads(newInspection.FinalInspectionUploads)
                 };
-                if (newInspection.FinalInspectionUploads != null)
-                {
-                    foreach (var item in newInspection.FinalInspectionUploads)
-                    {
-                        var upload = new FInspectData.Models.FinalInspectionUpload
-                        {
-                            Attachment = item.ToString()
-                        };
-                        Record.FinalInspectionUploads.Add(upload);
-                    }
-                }
+                //if (newInspection.FinalInspectionUploads != null)
+                //{
+                //    foreach (var item in newInspection.FinalInspectionUploads)
+                //    {
+                //        var upload = new FInspectData.Models.FinalInspectionUpload
+                //        {
+                //            Attachment = item.ToString()
+                //        };
+                //        Record.FinalInspectionUploads.Add(upload);
+                //    }
+                //}
                 _InspectionService.Add(Record);
                 return Ok(newInspection);
             }
@@ -133,10 +134,11 @@ namespace FInspectAPI.Controllers
                     InspectionLocation = inspection.InspectionLocation,
                     InspectionType = inspection.InspectionType,
                     Inspector = _InspectorService.GetByEmployeeId(inspection.EmployeeId),
-                    FinalInspectionUploads = new List<FInspectData.Models.FinalInspectionUpload>()
+                    FinalInspectionUploads = ConvertDATAUploads(inspection.FinalInspectionUploads)
+                    //FinalInspectionUploads = new List<FInspectData.Models.FinalInspectionUpload>()
                 };
                 // Call get upload method on FinalInspection Object, creates list of objects from list of strings
-                newDetails.FinalInspectionUploads = newDetails.GetUploadObjects(inspection.FinalInspectionUploads);
+                //newDetails.FinalInspectionUploads = newDetails.GetUploadObjects(inspection.FinalInspectionUploads);
                 _InspectionService.Update(newDetails);
                 return Ok(System.Net.HttpStatusCode.NoContent);
             }
@@ -196,6 +198,47 @@ namespace FInspectAPI.Controllers
             //return Json(result);
         }
 
+        [HttpGet()]
+        [ActionName("DownloadFiles")]
+        public IHttpActionResult DownloadFiles(int id)
+        {
+            FInspectData.Models.FinalInspectionUpload fileObj = new FInspectData.Models.FinalInspectionUpload();
+            fileObj = _FileService.GetFileById(id);
+            string fileName = fileObj.Attachment;
+            string filePath = @"C:\Users\peter\Desktop\Website Development Files\FInspect\Old\FInspectApp V3\FInspectAPI\FInspectAPI\Uploads\" + fileName;
+
+            var dataBytes = File.ReadAllBytes(filePath);
+            var dataStream = new MemoryStream(dataBytes);
+            return new UploadResult(dataStream, Request, fileName);
+        }
+
+        public List<FinalInspectionUpload> ConvertAPIUploads(ICollection<FInspectData.Models.FinalInspectionUpload> _uploads)
+        {
+            List<FinalInspectionUpload> uploads = new List<FinalInspectionUpload>();
+            foreach(var upload in _uploads)
+            {
+                var newUpload = new FinalInspectionUpload();
+                newUpload.Id = upload.Id;
+                newUpload.Attachment = upload.Attachment;
+                newUpload.FinalInspection_Id = upload.FinalInspection_Id;
+                uploads.Add(newUpload);
+            }
+            return uploads;
+        }
+
+        public List<FInspectData.Models.FinalInspectionUpload> ConvertDATAUploads(List<FinalInspectionUpload> _uploads)
+        {
+            List<FInspectData.Models.FinalInspectionUpload> uploads = new List<FInspectData.Models.FinalInspectionUpload>();
+            foreach (var upload in _uploads)
+            {
+                var newUpload = new FInspectData.Models.FinalInspectionUpload();
+                newUpload.Id = upload.Id;
+                newUpload.Attachment = upload.Attachment;
+                newUpload.FinalInspection_Id = upload.FinalInspection_Id;
+                uploads.Add(newUpload);
+            }
+            return uploads;
+        }
 
         protected override void Dispose(bool disposing)
         {

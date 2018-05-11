@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="FinalInspectionContext.cs" />
     <Compile Include="Interfaces\IAssemblyDetails.cs" />
+    <Compile Include="Interfaces\IFinalInspectionUpload.cs" />
     <Compile Include="Interfaces\IInspection.cs" />
     <Compile Include="Interfaces\IInspector.cs" />
     <Compile Include="Interfaces\IMiStatusTransaction.cs" />

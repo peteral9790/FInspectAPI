@@ -16,6 +16,19 @@ namespace FInspectAPI.Models
         public string InspectionType { get; set; }
         public string InspectorName { get; set; }
         public int EmployeeId { get; set; }
-        public List<string> FinalInspectionUploads { get; set; }
+        public List<FinalInspectionUpload> FinalInspectionUploads { get; set; }
+
+        public List<FinalInspectionUpload> ConvertList(List<FInspectData.Models.FinalInspectionUpload> _uploads)
+        {
+            List<FinalInspectionUpload> uploads = new List<FinalInspectionUpload>();
+            foreach (var item in _uploads)
+            {
+                var upload = new FinalInspectionUpload();
+                upload.Attachment = item.Attachment;
+                upload.Id = item.Id;
+                upload.FinalInspection_Id = item.FinalInspection_Id;
+            }
+            return uploads;
+        }
     }
 }

@@ -103,8 +103,10 @@
     </Compile>
     <Compile Include="Models\Assembly.cs" />
     <Compile Include="Models\FinalInspection.cs" />
+    <Compile Include="Models\FinalInspectionUploads.cs" />
     <Compile Include="Models\Inspector.cs" />
     <Compile Include="Models\MIStatusTransaction.cs" />
+    <Compile Include="Models\UploadResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

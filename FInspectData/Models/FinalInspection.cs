@@ -19,9 +19,6 @@ namespace FInspectData.Models
         public virtual Inspector Inspector { get; set; }
         public virtual ICollection<FinalInspectionUpload> FinalInspectionUploads { get; set; }
 
-
-
-
         //Methods for transforming list of strings to a  list of upload objects
         public List<string> GetUploadList(ICollection<FinalInspectionUpload> uploads)
         {

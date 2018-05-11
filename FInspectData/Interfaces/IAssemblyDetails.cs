@@ -1,5 +1,4 @@
 ﻿using FInspectData.Models;
-using System.Collections.Generic;
 
 namespace FInspectData.Interfaces
 {
