@@ -26,7 +26,7 @@ namespace FInspectAPI.Models
             //httpResponseMessage.Content = new ByteArrayContent(bookStuff.ToArray());  
             httpResponseMessage.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment");
             httpResponseMessage.Content.Headers.ContentDisposition.FileName = PdfFileName;
-            httpResponseMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+            httpResponseMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/pdf");
 
             return System.Threading.Tasks.Task.FromResult(httpResponseMessage);
         }
