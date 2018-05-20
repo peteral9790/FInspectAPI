@@ -205,7 +205,7 @@ namespace FInspectAPI.Controllers
             FInspectData.Models.FinalInspectionUpload fileObj = new FInspectData.Models.FinalInspectionUpload();
             fileObj = _FileService.GetFileById(id);
             string fileName = fileObj.Attachment;
-            string filePath = @"C:\Users\peter\Desktop\Website Development Files\FInspect\Old\FInspectApp V3\FInspectAPI\FInspectAPI\Uploads\" + fileName;
+            string filePath = HttpContext.Current.Server.MapPath("/Uploads/" + fileName);
 
             var dataBytes = File.ReadAllBytes(filePath);
             var dataStream = new MemoryStream(dataBytes);
