@@ -55,6 +55,7 @@
     <Compile Include="Interfaces\IInspection.cs" />
     <Compile Include="Interfaces\IInspector.cs" />
     <Compile Include="Interfaces\IMiStatusTransaction.cs" />
+    <Compile Include="Interfaces\INonconformance.cs" />
     <Compile Include="Migrations\201804272333083_initial.cs" />
     <Compile Include="Migrations\201804272333083_initial.Designer.cs">
       <DependentUpon>201804272333083_initial.cs</DependentUpon>

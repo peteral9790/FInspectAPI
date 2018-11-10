@@ -52,6 +52,7 @@
     <Compile Include="FinalInspectionuploadService.cs" />
     <Compile Include="InspectorService.cs" />
     <Compile Include="MiStatusService.cs" />
+    <Compile Include="NonconformanceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FInspectUI.Models.Inspection>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inspection History</title>
+</head>
+<body>
+    <div>
+        <h1>DATA DATA</h1>
+    </div>
+    <table class="table-striped">
+        <thead>
+            <tr>Part Num</tr>
+        </thead>
+        <tbody>
+            @foreach (var inspection in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => inspection.TMSPartNumber)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

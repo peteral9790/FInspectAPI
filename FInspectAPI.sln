@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FInspectData", "FInspectDat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FInspectServices", "FInspectService\FInspectServices.csproj", "{18087FFE-AC98-4BD5-B40F-198FA24EFADC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FInspectUI", "FInspectUI\FInspectUI.csproj", "{7E53B953-7293-462B-AC25-4B55AD707F47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{18087FFE-AC98-4BD5-B40F-198FA24EFADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18087FFE-AC98-4BD5-B40F-198FA24EFADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18087FFE-AC98-4BD5-B40F-198FA24EFADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E53B953-7293-462B-AC25-4B55AD707F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E53B953-7293-462B-AC25-4B55AD707F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E53B953-7293-462B-AC25-4B55AD707F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E53B953-7293-462B-AC25-4B55AD707F47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,6 +16,7 @@ namespace FInspectData.Models
         public string Location { get; set; }
         public string Comment { get; set; }
         public string Disposition { get; set; }
+
         public virtual Inspector Inspector { get; set; }
     }
 }

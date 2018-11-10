@@ -1,0 +1,23 @@
+﻿@model IEnumerable<FInspectAPI.Models.FinalInspection>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <ul>
+            @foreach (var inspection in Model)
+            {
+                <li>inspection.TMSPartNumber</li>
+            }
+        </ul>
+    </div>
+</body>
+</html>
